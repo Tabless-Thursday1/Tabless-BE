@@ -12,9 +12,10 @@ public class Role extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "roleid")
     private long roleid;
 
-    @Column(nullable = false,
+    @Column(name = "name",nullable = false,
             unique = true)
     private String name;
 
