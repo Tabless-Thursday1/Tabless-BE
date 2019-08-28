@@ -127,6 +127,16 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerVersion>1.5</compilerVersion>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+
             <!-- Heroku Maven Plugin Configuration -->
             <!-- https://cwiki.apache.org/confluence/display/MAVEN/Maven+Properties+Guide -->
             <plugin>
