@@ -16,8 +16,8 @@ public class TabServiceImpl implements TabService {
     @Autowired
     private UserRepository userrepos;
 
-    public Tab addTabToUser(String username, Tab tab){
-        User user = userrepos.findByUsername(username);
+    public Tab addTabToUser(long id, Tab tab){
+        User user = userrepos.findById(id);
         Tab newTab = new Tab();
 
         newTab.setTabname(tab.getTabname());
