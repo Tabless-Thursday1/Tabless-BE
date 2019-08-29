@@ -9,7 +9,7 @@ public interface TabService {
 
     Tab addTabToUser(String username, Tab tab);
 
-    Tab modifyTabByIds(long id, Tab tab);
+    Tab modifyTabById(long id, Tab tab);
 
     void deleteTab(long id);
 

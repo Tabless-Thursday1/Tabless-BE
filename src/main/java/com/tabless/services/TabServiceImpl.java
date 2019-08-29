@@ -7,8 +7,6 @@ import com.tabless.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service(value = "tabService")
 public class TabServiceImpl implements TabService {
 
@@ -34,5 +32,37 @@ public class TabServiceImpl implements TabService {
         }
 
         return tabrepos.save(newTab);
+    }
+
+    public Tab modifyTabById(long id, Tab tab){
+        Tab currentTab = tabrepos.findById(id);
+
+        if (currentTab != null){
+            if (id == currentTab.getTabid()){
+                if(tab.getTabname() != null){
+                    currentTab.setTabname(tab.getTabname());
+                }
+                if(tab.getTabdesc() != null){
+                    currentTab.setTabdesc(tab.getTabdesc());
+                }
+                if(tab.getTaburl() != null){
+                    currentTab.setTaburl(tab.getTaburl());
+                }
+                if(tab.getTabcat() != null){
+                    currentTab.setTabcat(tab.getTabcat());
+                }
+                if(tab.isTabprivate() != currentTab.isTabprivate()){
+                    currentTab.setTabprivate(tab.isTabprivate());
+                }
+            }
+        }
+
+        return tabrepos.save(currentTab);
+    }
+
+    public void deleteTab(long id){
+        Tab tabToDelete = tabrepos.findById(id);
+
+        tabrepos.delete(tabToDelete);
     }
 }
