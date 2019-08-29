@@ -57,6 +57,7 @@ public class User extends Auditable
     {
         setUsername(username);
         setPassword(password);
+
         for (UserRoles ur : userRoles)
         {
             ur.setUser(this);
