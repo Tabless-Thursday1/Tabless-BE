@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -41,17 +43,21 @@ public class UserController
     }
 
 
-    @ApiOperation(value = "Allows you to get an individual user based on their ID.", response = User.class)
-    @GetMapping(value = "/user/{userId}",
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @ApiOperation(value = "Allows you to get the logged in user.", response = User.class)
+    @GetMapping(value = "/user",
                 produces = {"application/json"})
-    public ResponseEntity<?> getUser(HttpServletRequest request,
-                                     @PathVariable
-                                             Long userId)
+    public ResponseEntity<?> getUser(HttpServletRequest request)
     {
         logger.trace(request.getMethod().toUpperCase() + " " + request.getRequestURI() + " accessed");
 
-        User u = userService.findUserById(userId);
-        return new ResponseEntity<>(u, HttpStatus.OK);
+        Object principal  = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username = ((UserDetails)principal).getUsername();
+
+        User user = userService.findUserByUsername(username);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 
