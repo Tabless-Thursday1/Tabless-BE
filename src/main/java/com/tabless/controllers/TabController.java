@@ -22,8 +22,8 @@ public class TabController {
 
     @ApiOperation(value = "Adds a tab to the user selected with the ID variable.", response = Tab.class)
     @PreAuthorize("hasAuthority('ROLE_USER')")
-    @PostMapping(value = "/new", produces = {"application/json"})
-    public ResponseEntity<?> addTabToUser(long id, @RequestBody Tab tab, HttpServletRequest request){
+    @PostMapping(value = "/new/{id}", produces = {"application/json"})
+    public ResponseEntity<?> addTabToUser(@PathVariable long id, @RequestBody Tab tab, HttpServletRequest request){
         logger.trace(request.getMethod().toUpperCase() + " " + request.getRequestURI() + " accessed");
 
          tabService.addTabToUser(id, tab);
