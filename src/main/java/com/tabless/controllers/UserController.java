@@ -42,7 +42,6 @@ public class UserController
 
 
     @ApiOperation(value = "Allows you to get an individual user based on their ID.", response = User.class)
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(value = "/user/{userId}",
                 produces = {"application/json"})
     public ResponseEntity<?> getUser(HttpServletRequest request,

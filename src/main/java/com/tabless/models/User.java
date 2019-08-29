@@ -61,8 +61,8 @@ public class User extends Auditable
         {
             ur.setUser(this);
         }
+
         this.userRoles = userRoles;
-        this.userTabs = userTabs;
         this.firstname = firstname;
         this.lastname = lastname;
         fullname = firstname + " " + lastname;

@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
 
     public User findUserById(long id) throws ResourceNotFoundException
     {
-        return userrepos.findById(id).orElseThrow(() -> new ResourceNotFoundException(Long.toString(id)));
+        return userrepos.findById(id);
     }
 
     public List<User> findAll()
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
     @Override
     public void delete(long id)
     {
-        if (userrepos.findById(id).isPresent())
+        if (userrepos.findById(id) != null)
         {
             userrepos.deleteById(id);
         } else
@@ -129,6 +129,6 @@ public class UserServiceImpl implements UserDetailsService, UserService
         {
             throw new ResourceNotFoundException(authentication.getName());
         }
-
     }
+
 }
