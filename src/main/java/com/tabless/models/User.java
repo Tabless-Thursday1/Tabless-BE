@@ -53,7 +53,7 @@ public class User extends Auditable
     {
     }
 
-    public User(String firstname, String lastname, String username, String password, List<UserRoles> userRoles, List<Tab> userTabs)
+    public User(String firstname, String lastname, String username, String password, List<UserRoles> userRoles)
     {
         setUsername(username);
         setPassword(password);
@@ -61,11 +61,7 @@ public class User extends Auditable
         {
             ur.setUser(this);
         }
-        for (Tab t : userTabs)
-        {
-            t.setUser(this);
-        }
-        this.userTabs = userTabs;
+
         this.userRoles = userRoles;
         this.firstname = firstname;
         this.lastname = lastname;
