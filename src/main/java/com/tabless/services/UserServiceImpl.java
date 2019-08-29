@@ -129,6 +129,6 @@ public class UserServiceImpl implements UserDetailsService, UserService
         {
             throw new ResourceNotFoundException(authentication.getName());
         }
-
     }
+
 }
