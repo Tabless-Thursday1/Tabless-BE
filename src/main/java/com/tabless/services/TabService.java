@@ -7,7 +7,7 @@ import java.util.List;
 public interface TabService {
 
 
-    Tab addTabToUser(String username, Tab tab);
+    Tab addTabToUser(long id, Tab tab);
 
     Tab modifyTabById(long id, Tab tab);
 
