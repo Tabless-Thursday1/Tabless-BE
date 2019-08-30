@@ -22,7 +22,7 @@ public class TabServiceImpl implements TabService {
 
         newTab.setTabname(tab.getTabname());
         newTab.setTabdesc(tab.getTabdesc());
-        newTab.setTaburl(tab.getTabdesc());
+        newTab.setTaburl(tab.getTaburl());
         newTab.setUser(user);
         newTab.setTabprivate(false);
         if(tab.getTabcat() != null){
