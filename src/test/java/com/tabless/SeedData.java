@@ -50,8 +50,6 @@ public class SeedData implements CommandLineRunner
         datas.add(new UserRoles(new User(), r2));
         User u2 = new User("Cin", "Nimon", "cinnamon", "1234567", datas);
         userService.save(u2);
-        System.out.println("u1 userid = " + u1.getUserid());
-        System.out.println("u2 userid = " + u2.getUserid());
 
     }
 }
